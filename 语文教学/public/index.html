@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>语文课前调研智能体</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      width: 100%;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .logo {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 32px;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: #7f8c8d;
+      font-size: 16px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .card-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      font-size: 20px;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+    .card p {
+      color: #7f8c8d;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .features {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .features h2 {
+      font-size: 20px;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .feature-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .feature-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .feature-text h4 {
+      font-size: 15px;
+      color: #2c3e50;
+      margin-bottom: 4px;
+    }
+    .feature-text p {
+      font-size: 13px;
+      color: #7f8c8d;
+      line-height: 1.5;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #bdc3c7;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">📚</div>
+      <h1>语文课前调研智能体</h1>
+      <p class="subtitle">以学定教 · 让语文课堂更有针对性</p>
+    </div>
+
+    <div class="cards">
+      <a href="teacher/" class="card">
+        <div class="card-icon">👨‍🏫</div>
+        <h3>教师管理端</h3>
+        <p>创建调研、管理题目、查看分析报告和教学建议</p>
+      </a>
+      <a href="student/?survey=demo-001" class="card">
+        <div class="card-icon">📝</div>
+        <h3>学生填写端</h3>
+        <p>学生通过链接填写课前调研问卷</p>
+      </a>
+      <a href="report/?survey=demo-001" class="card">
+        <div class="card-icon">📊</div>
+        <h3>调研报告页</h3>
+        <p>查看学情分析、教学目标建议和详细报告</p>
+      </a>
+    </div>
+
+    <div class="features">
+      <h2>核心功能</h2>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <span class="feature-icon">🧠</span>
+          <div class="feature-text">
+            <h4>AI智能出题</h4>
+            <p>根据课文和文体自动生成调研题目</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📈</span>
+          <div class="feature-text">
+            <h4>五维度分析</h4>
+            <p>字词基础/内容理解/阅读感受/思维深度/共性问题</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🎯</span>
+          <div class="feature-text">
+            <h4>教学目标建议</h4>
+            <p>基于学情生成基础/提升/拓展三层目标</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🏫</span>
+          <div class="feature-text">
+            <h4>班级管理</h4>
+            <p>多班级对比、学生个体追踪</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📖</span>
+          <div class="feature-text">
+            <h4>多文体支持</h4>
+            <p>散文/小说/诗歌/文言文 各有专属分析维度</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🔗</span>
+          <div class="feature-text">
+            <h4>一键分享</h4>
+            <p>生成链接发给学生，打开即可填写</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      语文课前调研智能体 v1.0 · 让每一堂语文课都更懂学生
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "yuwen-research-agent",
+  "version": "1.0.0",
+  "description": "语文课前调研智能体 - 后端服务",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "node-fetch": "^2.7.0"
+  }
+}

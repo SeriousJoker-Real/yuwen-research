@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>语文课前调研</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 id="survey-title">语文课前调研</h1>
+      <p id="survey-subtitle" class="subtitle">请认真填写以下问题，帮助老师更好地备课</p>
+    </header>
+
+    <form id="survey-form" class="survey-form">
+      <!-- 学生信息 -->
+      <section class="section student-info">
+        <h2>学生信息</h2>
+        <div class="form-group">
+          <label for="student-class">班级 <span class="required">*</span></label>
+          <select id="student-class" name="studentClass" class="select-input" required>
+            <option value="">请选择你的班级</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="student-name">姓名 <span class="required">*</span></label>
+          <input type="text" id="student-name" name="studentName" required placeholder="请输入你的姓名">
+        </div>
+      </section>
+
+      <!-- 题目区域（动态生成） -->
+      <section class="section questions-section">
+        <h2>调研问题</h2>
+        <div id="questions-container"></div>
+      </section>
+
+      <div class="submit-area">
+        <button type="submit" id="submit-btn" class="btn-primary">提交调研</button>
+      </div>
+    </form>
+
+    <!-- 提交成功提示 -->
+    <div id="success-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="success-icon">✓</div>
+        <h3>提交成功！</h3>
+        <p>感谢你的参与，老师会认真阅读你的回答。</p>
+      </div>
+    </div>
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

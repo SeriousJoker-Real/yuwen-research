@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教师端 - 语文课前调研管理</title>
+  <link rel="stylesheet" href="teacher.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <div class="logo">
+        <span class="logo-icon">📚</span>
+        <span class="logo-text">语文教研助手</span>
+      </div>
+      <nav class="nav-menu">
+        <div class="nav-item active" data-page="dashboard">
+          <span class="nav-icon">🏠</span>
+          <span>总览</span>
+        </div>
+        <div class="nav-item" data-page="surveys">
+          <span class="nav-icon">📋</span>
+          <span>调研管理</span>
+        </div>
+        <div class="nav-item" data-page="create">
+          <span class="nav-icon">➕</span>
+          <span>创建调研</span>
+        </div>
+        <div class="nav-item" data-page="texts">
+          <span class="nav-icon">📖</span>
+          <span>课文库</span>
+        </div>
+        <div class="nav-item" data-page="classes">
+          <span class="nav-icon">🏫</span>
+          <span>班级管理</span>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <!-- 顶部栏 -->
+      <header class="top-bar">
+        <h1 id="page-title">教学总览</h1>
+        <div class="top-actions">
+          <button id="new-survey-btn" class="btn-primary">+ 新建调研</button>
+        </div>
+      </header>
+
+      <!-- 总览页面 -->
+      <div id="page-dashboard" class="page active">
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-icon blue">📋</div>
+            <div class="stat-info">
+              <h3 id="stat-surveys">0</h3>
+              <p>已创建调研</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">👥</div>
+            <div class="stat-info">
+              <h3 id="stat-students">0</h3>
+              <p>参与学生总数</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange">📖</div>
+            <div class="stat-info">
+              <h3 id="stat-texts">0</h3>
+              <p>课文库数量</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple">📊</div>
+            <div class="stat-info">
+              <h3 id="stat-reports">0</h3>
+              <p>已生成报告</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-section">
+          <h2>最近调研</h2>
+          <div id="recent-surveys" class="survey-list">
+            <p class="empty-tip">暂无调研，点击右上角"新建调研"开始创建</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 调研管理页面 -->
+      <div id="page-surveys" class="page">
+        <div class="page-header">
+          <div class="filter-bar">
+            <input type="text" id="search-input" placeholder="搜索调研..." class="search-input">
+          </div>
+        </div>
+        <div id="all-surveys" class="survey-grid">
+          <p class="empty-tip">暂无调研</p>
+        </div>
+      </div>
+
+      <!-- 创建调研页面 -->
+      <div id="page-create" class="page">
+        <div class="create-form">
+          <div class="form-section">
+            <h2>📖 课文信息</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label>课文标题 *</label>
+                <input type="text" id="text-title" placeholder="如：荷塘月色">
+              </div>
+              <div class="form-group">
+                <label>作者</label>
+                <input type="text" id="text-author" placeholder="如：朱自清">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>文体类型 *</label>
+                <select id="text-type" class="select-input">
+                  <option value="prose">散文（写景/抒情/叙事）</option>
+                  <option value="novel">小说</option>
+                  <option value="poetry">诗歌（古诗/现代诗）</option>
+                  <option value="classical">文言文</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>学段</label>
+                <select id="grade-level" class="select-input">
+                  <option value="junior">初中</option>
+                  <option value="senior" selected>高中</option>
+                  <option value="primary">小学高段</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>课文原文（选填，AI出题更精准）</label>
+              <textarea id="text-content" rows="8" placeholder="粘贴课文原文，帮助AI更好地设计调研题目..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>📝 调研题目</h2>
+            <div class="section-header">
+              <p class="section-desc">可以手动添加题目，也可以用AI自动生成</p>
+              <button id="ai-generate-btn" class="btn-secondary">🤖 AI生成题目</button>
+            </div>
+            <div id="questions-editor" class="questions-editor">
+              <p class="empty-tip">暂无题目，点击上方"AI生成题目"或点击"添加题目"</p>
+            </div>
+            <div class="add-question-area">
+              <button id="add-open-btn" class="btn-outline">+ 添加问答题</button>
+              <button id="add-choice-btn" class="btn-outline">+ 添加选择题</button>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>⚙️ 调研设置</h2>
+            <div class="form-group">
+              <label>调研说明</label>
+              <input type="text" id="survey-subtitle" placeholder="如：请认真填写，帮助老师了解你的预习情况">
+            </div>
+            <div class="form-group">
+              <label>参与班级（每行一个，学生填写时从中选择）</label>
+              <textarea id="survey-classes" rows="4" placeholder="高一(1)班&#10;高一(2)班&#10;高一(3)班">高一(1)班&#10;高一(2)班&#10;高一(3)班</textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button id="save-draft-btn" class="btn-outline">保存草稿</button>
+            <button id="publish-btn" class="btn-primary">发布调研并生成链接</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 课文库页面 -->
+      <div id="page-texts" class="page">
+        <div class="page-header">
+          <h2>课文库</h2>
+          <button class="btn-primary">+ 添加课文</button>
+        </div>
+        <div id="text-library" class="text-grid">
+          <div class="text-card">
+            <h3>荷塘月色</h3>
+            <p class="text-author">朱自清</p>
+            <p class="text-preview">这几天心里颇不宁静。今晚在院子里坐着乘凉，忽然想起日日走过的荷塘，在这满月的光里，总该另有一番样子吧...</p>
+            <div class="text-tags">
+              <span class="tag">散文</span>
+              <span class="tag">高一</span>
+            </div>
+          </div>
+          <div class="text-card">
+            <h3>故都的秋</h3>
+            <p class="text-author">郁达夫</p>
+            <p class="text-preview">秋天，无论在什么地方的秋天，总是好的；可是啊，北国的秋，却特别地来得清，来得静，来得悲凉...</p>
+            <div class="text-tags">
+              <span class="tag">散文</span>
+              <span class="tag">高一</span>
+            </div>
+          </div>
+          <div class="text-card empty-card">
+            <span class="add-icon">+</span>
+            <p>更多课文待添加</p>
+          </div>
+        </div>
+      </div>
+      <!-- 班级管理页面 -->
+      <div id="page-classes" class="page">
+        <div class="page-header">
+          <h2>班级管理</h2>
+          <button id="add-class-btn" class="btn-primary">+ 添加班级</button>
+        </div>
+        <div id="class-list" class="class-grid">
+          <div class="class-card">
+            <div class="class-header">
+              <h3>高一(1)班</h3>
+              <span class="student-count">45人</span>
+            </div>
+            <div class="class-stats">
+              <div class="class-stat-item">
+                <span class="stat-label">参与调研</span>
+                <span class="stat-value">3次</span>
+              </div>
+              <div class="class-stat-item">
+                <span class="stat-label">平均提交率</span>
+                <span class="stat-value">85%</span>
+              </div>
+            </div>
+            <div class="class-footer">
+              <button class="btn-outline">学生名单</button>
+              <button class="btn-outline">学情档案</button>
+            </div>
+          </div>
+          <div class="class-card">
+            <div class="class-header">
+              <h3>高一(2)班</h3>
+              <span class="student-count">43人</span>
+            </div>
+            <div class="class-stats">
+              <div class="class-stat-item">
+                <span class="stat-label">参与调研</span>
+                <span class="stat-value">3次</span>
+              </div>
+              <div class="class-stat-item">
+                <span class="stat-label">平均提交率</span>
+                <span class="stat-value">90%</span>
+              </div>
+            </div>
+            <div class="class-footer">
+              <button class="btn-outline">学生名单</button>
+              <button class="btn-outline">学情档案</button>
+            </div>
+          </div>
+          <div class="class-card">
+            <div class="class-header">
+              <h3>高一(3)班</h3>
+              <span class="student-count">46人</span>
+            </div>
+            <div class="class-stats">
+              <div class="class-stat-item">
+                <span class="stat-label">参与调研</span>
+                <span class="stat-value">2次</span>
+              </div>
+              <div class="class-stat-item">
+                <span class="stat-label">平均提交率</span>
+                <span class="stat-value">78%</span>
+              </div>
+            </div>
+            <div class="class-footer">
+              <button class="btn-outline">学生名单</button>
+              <button class="btn-outline">学情档案</button>
+            </div>
+          </div>
+          <div class="class-card empty-card">
+            <span class="add-icon">+</span>
+            <p>添加新班级</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- 发布成功弹窗 -->
+  <div id="publish-modal" class="modal hidden">
+    <div class="modal-content publish-modal">
+      <div class="success-badge">✓</div>
+      <h2>调研发布成功！</h2>
+      <p class="modal-desc">复制链接或扫描二维码发给学生填写：</p>
+      <div class="qr-section" id="publish-qr" style="margin: 20px auto; text-align:center;">
+        <div id="publish-qr-canvas" style="display:inline-block;background:white;padding:16px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);"></div>
+        <p style="margin-top:12px;color:#666;font-size:14px;">扫一扫填写调研</p>
+      </div>
+      <div class="link-box">
+        <input type="text" id="survey-link" readonly>
+        <button id="copy-link-btn" class="btn-primary">复制链接</button>
+      </div>
+      <div class="modal-actions">
+        <button id="view-report-btn" class="btn-outline">查看报告页</button>
+        <button id="close-modal-btn" class="btn-secondary">完成</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 二维码弹窗 -->
+  <div id="qr-modal" class="modal hidden">
+    <div class="modal-content" style="max-width:420px;text-align:center;">
+      <h2>学生填写二维码</h2>
+      <p class="modal-desc" id="qr-modal-title">学生扫描二维码即可填写调研</p>
+      <div style="margin: 24px 0;">
+        <div id="qr-canvas" style="display:inline-block;background:white;padding:20px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08);"></div>
+      </div>
+      <div id="qr-url-text" style="font-size:13px;color:#888;word-break:break-all;margin-bottom:16px;"></div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" onclick="copyQrLink()">复制链接</button>
+        <button class="btn btn-primary" onclick="downloadQrCode()">下载二维码</button>
+        <button class="btn btn-secondary" onclick="closeQrModal()">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="teacher.js"></script>
+</body>
+</html>

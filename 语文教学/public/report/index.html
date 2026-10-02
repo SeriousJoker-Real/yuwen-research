@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学情调研报告</title>
+  <link rel="stylesheet" href="report.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 头部 -->
+    <header class="header">
+      <div class="header-content">
+        <h1 id="report-title">学情调研报告</h1>
+        <p id="report-subtitle" class="subtitle">基于课前调研的多维度学情分析</p>
+        <div class="meta-info">
+          <span id="text-info" class="meta-tag">课文：--</span>
+          <span id="text-type-tag" class="meta-tag">文体：--</span>
+          <span id="response-count" class="meta-tag">提交人数：0</span>
+          <span id="report-time" class="meta-tag">生成时间：--</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 概览卡片 -->
+    <section class="overview-cards">
+      <div class="overview-filter">
+        <label>班级筛选：</label>
+        <select id="class-filter" class="select-input">
+          <option value="all">全部班级</option>
+        </select>
+      </div>
+      <div class="cards-row">
+      <div class="card overview-card">
+        <div class="card-icon basics">📚</div>
+        <div class="card-content">
+          <h3>基础积累</h3>
+          <p id="score-basics" class="score">--</p>
+          <p id="desc-basics" class="card-desc">待分析</p>
+        </div>
+      </div>
+      <div class="card overview-card">
+        <div class="card-icon understanding">💡</div>
+        <div class="card-content">
+          <h3>内容理解</h3>
+          <p id="score-understanding" class="score">--</p>
+          <p id="desc-understanding" class="card-desc">待分析</p>
+        </div>
+      </div>
+      <div class="card overview-card">
+        <div class="card-icon feeling">❤️</div>
+        <div class="card-content">
+          <h3>阅读感受</h3>
+          <p id="score-feeling" class="score">--</p>
+          <p id="desc-feeling" class="card-desc">待分析</p>
+        </div>
+      </div>
+      <div class="card overview-card">
+        <div class="card-icon thinking">🧠</div>
+        <div class="card-content">
+          <h3>鉴赏思维</h3>
+          <p id="score-thinking" class="score">--</p>
+          <p id="desc-thinking" class="card-desc">待分析</p>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- 班级对比 -->
+    <section class="compare-section">
+      <h2 class="section-title">🏫 班级对比</h2>
+      <div class="compare-card">
+        <div id="class-compare" class="class-compare-chart">
+          <p class="empty-tip">需要至少2个班级的提交数据才能对比</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 五维度详细分析 -->
+    <section class="analysis-section">
+      <h2 class="section-title">📊 五维度详细分析</h2>
+
+      <!-- 字词基础 -->
+      <div class="analysis-card" id="dim-basics">
+        <div class="dim-header basics">
+          <span class="dim-icon">📚</span>
+          <h3>字词基础</h3>
+          <span id="level-basics" class="level-tag">待分析</span>
+        </div>
+        <div class="dim-body">
+          <p id="summary-basics" class="dim-summary">暂无分析数据</p>
+          <div class="keywords-section">
+            <h4>关键词云</h4>
+            <div id="keywords-basics" class="keywords-container">
+              <span class="keyword-placeholder">等待分析...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 内容理解 -->
+      <div class="analysis-card" id="dim-understanding">
+        <div class="dim-header understanding">
+          <span class="dim-icon">💡</span>
+          <h3>内容理解</h3>
+          <span id="level-understanding" class="level-tag">待分析</span>
+        </div>
+        <div class="dim-body">
+          <p id="summary-understanding" class="dim-summary">暂无分析数据</p>
+          <div class="highlights-section">
+            <h4>理解亮点</h4>
+            <ul id="highlights-understanding" class="highlight-list">
+              <li class="placeholder">等待分析...</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 阅读感受 -->
+      <div class="analysis-card" id="dim-feeling">
+        <div class="dim-header feeling">
+          <span class="dim-icon">❤️</span>
+          <h3>阅读感受</h3>
+          <span id="level-feeling" class="level-tag">待分析</span>
+        </div>
+        <div class="dim-body">
+          <p id="summary-feeling" class="dim-summary">暂无分析数据</p>
+          <div class="quotes-section">
+            <h4>学生原话摘录</h4>
+            <div id="quotes-feeling" class="quote-list">
+              <blockquote class="placeholder">等待分析...</blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 思维深度 -->
+      <div class="analysis-card" id="dim-thinking">
+        <div class="dim-header thinking">
+          <span class="dim-icon">🧠</span>
+          <h3>思维深度</h3>
+          <span id="level-thinking" class="level-tag">待分析</span>
+        </div>
+        <div class="dim-body">
+          <p id="summary-thinking" class="dim-summary">暂无分析数据</p>
+          <div class="questions-section">
+            <h4>学生提出的疑问</h4>
+            <ul id="questions-thinking" class="question-list">
+              <li class="placeholder">等待分析...</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 共性问题 -->
+      <div class="analysis-card highlight-card" id="dim-common">
+        <div class="dim-header common-problems">
+          <span class="dim-icon">⚠️</span>
+          <h3>共性问题</h3>
+          <span class="level-tag warning">需重点关注</span>
+        </div>
+        <div class="dim-body">
+          <ul id="common-problems-list" class="problem-list">
+            <li class="placeholder">等待分析...</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 教学目标建议 -->
+    <section class="teaching-section">
+      <h2 class="section-title">🎯 教学目标建议</h2>
+
+      <div class="teaching-card">
+        <div class="teaching-layer">
+          <h3><span class="layer-icon basic">📖</span>基础目标</h3>
+          <p class="layer-desc">面向全体学生，确保掌握核心知识</p>
+          <ul id="goals-basic" class="goal-list">
+            <li class="placeholder">等待分析生成...</li>
+          </ul>
+        </div>
+
+        <div class="teaching-layer">
+          <h3><span class="layer-icon improve">⬆️</span>提升目标</h3>
+          <p class="layer-desc">面向中等以上学生，深化理解与运用</p>
+          <ul id="goals-improve" class="goal-list">
+            <li class="placeholder">等待分析生成...</li>
+          </ul>
+        </div>
+
+        <div class="teaching-layer">
+          <h3><span class="layer-icon expand">🚀</span>拓展目标</h3>
+          <p class="layer-desc">面向学有余力的学生，培养高阶思维</p>
+          <ul id="goals-expand" class="goal-list">
+            <li class="placeholder">等待分析生成...</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="suggestion-card">
+        <h3>💡 教学重点建议</h3>
+        <div id="teaching-suggestions" class="suggestion-content">
+          <p class="placeholder">等待分析生成教学建议...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 学生名单 -->
+    <section class="students-section">
+      <div class="section-header-row">
+        <h2 class="section-title">👥 提交情况</h2>
+        <div class="student-stats">
+          <span class="stat-badge">共 <strong id="total-classes">0</strong> 个班级</span>
+          <span class="stat-badge">提交率 <strong id="submit-rate">--</strong></span>
+        </div>
+      </div>
+      <div class="students-table-wrapper">
+        <table class="students-table">
+          <thead>
+            <tr>
+              <th>序号</th>
+              <th>班级</th>
+              <th>姓名</th>
+              <th>提交时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="students-tbody">
+            <tr>
+              <td colspan="5" class="empty-state">暂无提交数据</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 操作区 -->
+    <div class="action-area">
+      <button id="analyze-btn" class="btn-primary">生成AI分析报告</button>
+      <button id="export-btn" class="btn-secondary">导出报告</button>
+    </div>
+  </div>
+
+  <script src="report.js"></script>
+</body>
+</html>

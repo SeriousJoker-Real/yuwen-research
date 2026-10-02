@@ -1,0 +1,683 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #f5f7fa;
+  min-height: 100vh;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* 头部 */
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 15px;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.meta-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.meta-tag {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  backdrop-filter: blur(10px);
+}
+
+/* 概览卡片 */
+.overview-cards {
+  margin-bottom: 32px;
+}
+
+.overview-filter {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.overview-filter label {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.select-input {
+  padding: 8px 32px 8px 12px;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.select-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.cards-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.overview-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s;
+}
+
+.overview-card:hover {
+  transform: translateY(-2px);
+}
+
+.card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.card-icon.basics { background: #e6f7ff; }
+.card-icon.understanding { background: #f6ffed; }
+.card-icon.feeling { background: #fff1f0; }
+.card-icon.thinking { background: #f9f0ff; }
+
+.card-content h3 {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.score {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: #999;
+}
+
+/* 章节标题 */
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* 分析卡片 */
+.analysis-section {
+  margin-bottom: 32px;
+}
+
+.analysis-card {
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.dim-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dim-icon {
+  font-size: 24px;
+}
+
+.dim-header h3 {
+  font-size: 17px;
+  font-weight: 600;
+  flex: 1;
+}
+
+.level-tag {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #f0f0f0;
+  color: #999;
+}
+
+.level-tag.good { background: #f6ffed; color: #52c41a; }
+.level-tag.medium { background: #fff7e6; color: #fa8c16; }
+.level-tag.weak { background: #fff1f0; color: #f5222d; }
+.level-tag.warning { background: #fff1f0; color: #f5222d; }
+
+.dim-body {
+  padding: 24px;
+}
+
+.dim-summary {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.dim-body h4 {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+/* 关键词 */
+.keywords-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.keyword {
+  padding: 6px 14px;
+  background: #f0f5ff;
+  color: #667eea;
+  border-radius: 16px;
+  font-size: 13px;
+}
+
+.keyword.hot {
+  background: #667eea;
+  color: #fff;
+  font-weight: 500;
+}
+
+.keyword-placeholder,
+.placeholder {
+  color: #ccc;
+  font-style: italic;
+}
+
+/* 亮点列表 */
+.highlight-list,
+.question-list,
+.problem-list {
+  list-style: none;
+}
+
+.highlight-list li,
+.question-list li,
+.problem-list li {
+  padding: 10px 0;
+  border-bottom: 1px dashed #f0f0f0;
+  font-size: 14px;
+  color: #555;
+}
+
+.highlight-list li:last-child,
+.question-list li:last-child,
+.problem-list li:last-child {
+  border-bottom: none;
+}
+
+/* 学生原话 */
+.quote-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quote-list blockquote {
+  padding: 16px 20px;
+  background: #fafafa;
+  border-left: 4px solid #ff9c6e;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.quote-list blockquote .author {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #999;
+  text-align: right;
+}
+
+.quote-list blockquote.placeholder {
+  color: #ccc;
+  border-left-color: #f0f0f0;
+}
+
+/* 共性问题 */
+.highlight-card {
+  border: 2px solid #ffd666;
+}
+
+.problem-list li {
+  padding-left: 24px;
+  position: relative;
+}
+
+.problem-list li::before {
+  content: "!";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  background: #ff4d4f;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* 教学目标 */
+.teaching-section {
+  margin-bottom: 32px;
+}
+
+.teaching-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.teaching-layer {
+  padding: 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.teaching-layer:last-child {
+  border-bottom: none;
+}
+
+.teaching-layer h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.layer-icon {
+  font-size: 20px;
+}
+
+.layer-desc {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 14px;
+}
+
+.goal-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.goal-list li {
+  padding: 8px 0 8px 24px;
+  position: relative;
+  font-size: 14px;
+  color: #555;
+}
+
+.goal-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #52c41a;
+  font-weight: bold;
+}
+
+.goal-list li.placeholder::before {
+  content: "";
+}
+
+/* 教学建议卡片 */
+.suggestion-card {
+  background: linear-gradient(135deg, #fffbe6 0%, #fff1b8 100%);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.suggestion-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #d48806;
+}
+
+.suggestion-content {
+  font-size: 14px;
+  color: #614700;
+  line-height: 1.8;
+}
+
+.suggestion-content p {
+  margin-bottom: 10px;
+}
+
+.suggestion-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* 学生名单 */
+.students-section {
+  margin-bottom: 32px;
+}
+
+.students-table-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.students-table th {
+  background: #fafafa;
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.students-table td {
+  padding: 14px 20px;
+  font-size: 14px;
+  color: #555;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.students-table tr:last-child td {
+  border-bottom: none;
+}
+
+.empty-state {
+  text-align: center;
+  color: #ccc;
+  padding: 40px !important;
+}
+
+/* 操作区 */
+.action-area {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 20px 0 40px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  padding: 14px 36px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.btn-secondary {
+  background: #fff;
+  color: #667eea;
+  border: 1.5px solid #667eea;
+  padding: 14px 36px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: #f8f9ff;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .header {
+    padding: 28px 24px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .cards-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .overview-card {
+    padding: 16px;
+  }
+
+  .score {
+    font-size: 22px;
+  }
+
+  .dim-body {
+    padding: 16px;
+  }
+
+  .action-area {
+    flex-direction: column;
+  }
+}
+
+/* 班级对比 */
+.compare-section {
+  margin-bottom: 32px;
+}
+
+.compare-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.class-compare-chart {
+  min-height: 200px;
+}
+
+.class-compare-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.class-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.class-bar-label {
+  width: 100px;
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.class-bar-track {
+  flex: 1;
+  height: 28px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.class-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 500;
+  transition: width 0.5s ease;
+}
+
+.class-bar-count {
+  width: 50px;
+  font-size: 13px;
+  color: #666;
+  text-align: right;
+}
+
+/* 学生名单头部 */
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header-row .section-title {
+  margin-bottom: 0;
+}
+
+.student-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.stat-badge {
+  padding: 6px 14px;
+  background: #fff;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #666;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.stat-badge strong {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.students-table .btn-view {
+  padding: 4px 12px;
+  font-size: 12px;
+  background: #f0f5ff;
+  color: #667eea;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.students-table .btn-view:hover {
+  background: #667eea;
+  color: #fff;
+}
+
+/* 学生详情弹窗 */
+.student-detail-modal .detail-section {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.student-detail-modal .detail-section h4 {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.student-detail-modal .detail-answer {
+  background: #fafafa;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.student-detail-modal .detail-question {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 4px;
+}
